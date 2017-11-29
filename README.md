@@ -35,7 +35,7 @@ Firmware 1.02.06.00<br>
 <tr><td>version_info</td><td>blockrom21:</td><td>512</td><td>KiB</td></tr>
 <tr><td>vd_restore</td><td>blockrom22:</td><td>256</td><td>KiB</td></tr>
 <tr><td>userdata</td><td>blockrom23:</td><td>50176</td><td>KiB</td></tr>
-<tr><td></table>
+</table>
 
 The firmware from Sony is encrypted, but, the firmware loader allows non encrypted images.  The decryption keys are stored in enviroment variables during the update so they can be retreieved and sonys firmware can be decrypted.  The serial console UART 0 and USB 0 are on second board behind the LCD.  The board is clearly labled and easy to solder. At startup U-Boot loads runtime_cfg and the variable gpio_LECD_en controls whether the console is enabled after the intial post message.</br><br>
 
