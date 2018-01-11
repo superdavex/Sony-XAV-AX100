@@ -12,7 +12,7 @@ This release requires cygwin and my modified firmware to be installed.
 
 1. Install cygwin
 2. Extract all the files in logo.zip to your pc.
-3. Open a cygwin shell and navigate to the extracted directory.
+3. Open a cygwin shell and navigate to the extracted directory. EX: cd /cygdrive/c/Users/superdave/Desktop/logo
 4. Run ./createXAVlogo.sh and pass the input file.  ex ./createXAVlogo.sh input.jpg
 5. Copy usbexecute, flash_erase, and newlogo.img to a usb stick.
 6. Insert it into radio, flash will auto start.
