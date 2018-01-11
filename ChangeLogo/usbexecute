@@ -1,0 +1,11 @@
+cp /tmp/sp/mnt/sda1/flash_erase /tmp
+chmod 777 /tmp/flash_erase
+
+/tmp/flash_erase /dev/mtd13 0 0
+
+/usr/sbin/nandwrite -p /dev/mtd13 /tmp/sp/mnt/sda1/newlogo.img
+
+reboot
+
+exit 0
+
