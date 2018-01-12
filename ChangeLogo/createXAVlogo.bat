@@ -52,8 +52,6 @@ IF exist tmpoutput.bgra (
     if exist "!usbdrive!:\flash_erase" DEL "!usbdrive!:\flash_erase"
     if exist "!usbdrive!:\newlogo.img" DEL "!usbdrive!:\newlogo.img"
 	
-	pause
-	
     copy usbexecute !usbdrive!:\
     if not exist "!usbdrive!:\usbexecute"  goto failed_to_copy 
    
