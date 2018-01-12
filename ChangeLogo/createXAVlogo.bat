@@ -47,20 +47,21 @@ IF exist tmpoutput.bgra (
     set usbdrive=!usbdrive:~0,1!
     echo !usbdrive!
     
+	REM Delete existing files on USB
+	if exist "!usbdrive!:\usbexecute" DEL "!usbdrive!:\usbexecute"
+    if exist "!usbdrive!:\flash_erase" DEL "!usbdrive!:\flash_erase"
+    if exist "!usbdrive!:\newlogo.img" DEL "!usbdrive!:\newlogo.img"
+	
+	pause
+	
     copy usbexecute !usbdrive!:\
-    if not exist "!usbdrive!:\usbexecute" (
-        goto failed_to_copy 
-    )
-    
+    if not exist "!usbdrive!:\usbexecute"  goto failed_to_copy 
+   
     copy flash_erase "!usbdrive!:\"
-    if not exist "!usbdrive!:\flash_erase" (
-        goto failed_to_copy 
-    )
+    if not exist "!usbdrive!:\flash_erase" goto failed_to_copy
+    
     copy newlogo.img "!usbdrive!:\"
-    copy newlogo.img "!usbdrive!:\"
-    if not exist "!usbdrive!:\newlogo.img" (
-        goto failed_to_copy 
-    )
+    if not exist "!usbdrive!:\newlogo.img" goto failed_to_copy
     
     echo usbexecute, flash_erase, and newlogo.img have been copied.  Insert usb stick into radio.  Radio will reboot when complete.  Remove the drive as soon as it reboots.
     ECHO Press any key to exit
