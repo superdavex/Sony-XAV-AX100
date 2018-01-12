@@ -14,20 +14,20 @@ then
     rm $outname
 fi
 #shrink/stretch
-#./convert -compress none -resize 800x480! -verbose -interlace none -depth 8 $input tmpoutput.rgba
+#./convert -compress none -resize 800x480! -verbose -interlace none -depth 8 $input tmpoutput.bgra
 #scale and add borders
-./convert -compress none -resize 800x480 -verbose -interlace none -background black -gravity center -depth 8 -extent 800x480 $input tmpoutput.rgba
+./convert -compress none -resize 800x480 -verbose -interlace none -background black -gravity center -depth 8 -extent 800x480 $input tmpoutput.bgra
 
-if [ -f tmpoutput.rgba ]
+if [ -f tmpoutput.bgra ]
 then
     pre="\x50\x41\x52\x54\x50\x70\x17\x00\x10\x00\x00\x00\x20\x00\x00\x00\x6C\x6F\x67\x6F\x2E\x62\x69\x6E\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x20\x70\x17\x00\x30\x00\x00\x00\x4F\x47\x4F\x4C\x00\x00\x00\x00\x00\x00\x00\x00\x20\x03\x00\x00\xE0\x01\x00\x00\x03\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"
     echo -n -e $pre > $outname
     
-    cat tmpoutput.rgba >> $outname
+    cat tmpoutput.bgra >> $outname
     cat logo.pad >> $outname
    
-    ./convert -compress none -size 800x480! -depth 8 tmpoutput.rgba converted_preview.tiff
-    #rm tmpoutput.rgba
+    ./convert -compress none -size 800x480! -depth 8 tmpoutput.bgra converted_preview.tiff
+    #rm tmpoutput.bgra
     outsize=$(stat --printf="%s\n" $outname)
     if ! [ $outsize -eq $logo_len ]
     then    

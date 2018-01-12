@@ -20,18 +20,18 @@ IF exist %outname% (
 
 
 REM #shrink/stretch
-REM #./convert -compress none -resize 800x480! -verbose -interlace none -depth 8 $input tmpoutput.rgba
+REM #./convert -compress none -resize 800x480! -verbose -interlace none -depth 8 $input tmpoutput.bgra
 REM #scale and add borders
-convert -compress none -resize 800x480 -verbose -interlace none -background black -gravity center -depth 8 -extent 800x480 %input% tmpoutput.rgba
+convert -compress none -resize 800x480 -verbose -interlace none -background black -gravity center -depth 8 -extent 800x480 %input% tmpoutput.bgra
 
-IF exist tmpoutput.rgba (
+IF exist tmpoutput.bgra (
 
     copy logo.pre %outname%
-    type tmpoutput.rgba >> %outname%
+    type tmpoutput.bgra >> %outname%
     type logo.pad >> %outname%
 
-    convert -compress none -size 800x480! -depth 8 tmpoutput.rgba converted_preview.tiff
-    REM #rm tmpoutput.rgba
+    convert -compress none -size 800x480! -depth 8 tmpoutput.bgra converted_preview.tiff
+    REM #rm tmpoutput.bgra
     echo.
     echo.
 
